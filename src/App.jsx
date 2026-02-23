@@ -30,24 +30,36 @@ function App() {
     }
   }
   
-
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-2">Weather Dashboard</h1>
-      <p className="mb-4">Search for any city to see current weather</p>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div className="text-center mb-6 sm:mb-8 lg:mb-10">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+            Weather Dashboard
+          </h1>
+          <p className="text-sm sm:text-base text-gray-600">
+            Search for any city to see current weather
+          </p>
+        </div>
 
-      <SearchBar onSearch={handleSearch} />
+        <div className="max-w-md mx-auto w-full mb-6 sm:mb-8">
+          <SearchBar onSearch={handleSearch} />
+        </div>
 
-      {/* show spinner when loading, otherwise show error or weather */}
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          {/* 👇 USE the ErrorMessage component instead of plain <p> tag */}
-          {error && <ErrorMessage message={error} />}
-          <WeatherDisplay weatherData={weatherData} />
-        </>
-      )}
+        <div className="mt-4 sm:mt-6 lg:mt-8">
+          {/* show spinner when loading, otherwise show error or weather */}
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              {/*  USE the ErrorMessage component instead of plain <p> tag */}
+              {error && <ErrorMessage message={error} />}
+              <WeatherDisplay weatherData={weatherData} />
+            </>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
