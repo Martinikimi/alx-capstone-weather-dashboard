@@ -3,6 +3,7 @@ import SearchBar from "./components/search/SearchBar"
 import WeatherDisplay from "./components/weather/WeatherDisplay"
 import { getWeatherByCity } from "./services/weatherService"
 import LoadingSpinner from "./components/common/LoadingSpinner"
+import ErrorMessage from "./components/common/ErrorMessage" 
 
 function App() {
   const [weatherData, setWeatherData] = useState(null) // stores API response
@@ -13,29 +14,27 @@ function App() {
   const handleSearch = async (city) => {
     try {
       setError("") // clear previous errors
-      setLoading(true) //  Start loading, show spinner
+      setLoading(true) // Start loading, show spinner
       console.log("Loading is:", true) 
 
-
       const data = await getWeatherByCity(city) // fetch weather
-      setLoading(false) //  Stop loading, hide spinner
+      
+      setWeatherData(data) // save data to state
+      setLoading(false) // Stop loading, hide spinner
       console.log("Loading is:", false)
 
-
-
-      setWeatherData(data) // save data to state
     } catch (err) {
       setWeatherData(null)   // clear previous data
       setError("City not found or API error") // show error
-      setLoading(false) //  Stop loading - hide spinner in a scenario we get an error
+      setLoading(false) // Stop loading - hide spinner when error happens
     }
   }
   
 
   return (
     <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-2">Hello </h1>
-      <p className="mb-4">This is my weather dashboard</p>
+      <h1 className="text-2xl font-bold mb-2">Weather Dashboard</h1>
+      <p className="mb-4">Search for any city to see current weather</p>
 
       <SearchBar onSearch={handleSearch} />
 
@@ -44,7 +43,8 @@ function App() {
         <LoadingSpinner />
       ) : (
         <>
-          {error && <p className="text-red-500 mt-4">{error}</p>}
+          {/* 👇 USE the ErrorMessage component instead of plain <p> tag */}
+          {error && <ErrorMessage message={error} />}
           <WeatherDisplay weatherData={weatherData} />
         </>
       )}
@@ -53,4 +53,3 @@ function App() {
 }
 
 export default App
-
