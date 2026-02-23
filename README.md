@@ -1,102 +1,79 @@
-🌤️ ALX Capstone: Weather Dashboard
+# 🌤️ ALX Capstone: Weather Dashboard
 
 A responsive weather dashboard built with React that provides real-time weather information for cities worldwide. This is my ALX ProDev Frontend Capstone project.
 
-📋 Table of Contents
+## 📋 Table of Contents
+- [Project Status](#-project-status)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [What I've Built](#️-what-ive-built)
+- [What I'm Working On](#-what-im-working-on)
+- [Challenges Faced](#-challenges-faced)
+- [What I've Learned](#-what-ive-learned)
+- [Next Steps](#-next-steps)
+- [Author](#-author)
 
-Project Status
+## 🚦 Project Status
 
-Features Planned
+**Current Phase: Phase 1 Complete - Core Features & Responsive Design**
 
-Tech Stack
+### ✅ Completed (Phase 1)
+- [x] React project created with Vite
+- [x] Folder structure organized
+- [x] GitHub repository initialized
+- [x] README documentation started
+- [x] SearchBar component with input validation
+- [x] WeatherDisplay component with responsive grid layout
+- [x] Connected OpenWeatherMap API to fetch real-time weather data
+- [x] Weather icons from OpenWeatherMap with smart emoji fallback
+- [x] Loading spinner for better UX during API calls
+- [x] Reusable ErrorMessage component
+- [x] Responsive design (works on mobile, tablet, and desktop)
+- [x] Gradient background and polished card design
 
-Getting Started
+### 🚀 Features
 
-Project Structure
+#### Current Features
+- 🔍 **City Search** - Search for any city worldwide
+- 🌡️ **Current Temperature** - Real-time temperature in Celsius
+- 💧 **Humidity** - Current humidity percentage
+- 💨 **Wind Speed** - Current wind speed in m/s
+- ☁️ **Weather Icons** - Visual weather representation with smart fallback emojis
+- 📱 **Fully Responsive** - Works perfectly on phones, tablets, and desktops
+- ⏳ **Loading States** - Spinner shows while fetching data
+- ⚠️ **Error Handling** - User-friendly error messages
+- ✅ **Input Validation** - Prevents empty searches
 
-What I've Built So Far
+#### Coming Soon (Phase 2)
+- 🔄 **Recent Searches** - Save last 5 searched cities in localStorage
+- 🌡️ **Temperature Toggle** - Switch between Celsius and Fahrenheit
+- 🌙 **Dark/Light Mode** - Theme switcher
+- 📍 **Geolocation** - Get weather for current location
 
-What I'm Working On
+#### Future Enhancements (Phase 3)
+- 📅 **5-Day Forecast** - Extended weather forecast
+- 📊 **Weather Charts** - Visual temperature trends
+- ✨ **Animations** - Smooth transitions and effects
 
-Challenges Faced
+## 🛠️ Tech Stack
 
-Next Steps
+- **Frontend:** React 18 + Vite
+- **Styling:** Tailwind CSS
+- **API:** OpenWeatherMap
+- **Storage:** Browser localStorage (planned)
+- **Deployment:** Netlify (planned)
 
-Author
+## 🚀 Getting Started
 
-🚦 Project Status
+### Prerequisites
+- Node.js (v16+)
+- npm
 
-Current Phase: Week 2 - Features Implementation (Feb 16-22, 2026)
+### Installation
 
-✅ Completed:
-
- React project created with Vite
-
- Folder structure organized
-
- GitHub repository initialized
-
- README documentation started
-
- SearchBar component implemented
-
- WeatherDisplay component implemented
-
- Connected OpenWeatherMap API to fetch real-time weather data
-
-🔄 In Progress:
-
- Basic error handling for invalid city input
-
- Loading state while fetching data
-
- UX enhancements like recent searches and temperature toggle
-
-✨ Features Planned
-Core Features (Must Have)
-
-🔍 City search functionality
-
-🌡️ Current temperature display (Celsius/Fahrenheit)
-
-💧 Humidity percentage
-
-💨 Wind speed
-
-☁️ Weather condition icons
-
-📱 Responsive design
-
-UX Enhancements (Will Add)
-
-🔄 Recent searches (localStorage)
-
-⏳ Loading states
-
-⚠️ Error messages
-
-🌙 Dark/light mode (stretch goal)
-
-🛠️ Tech Stack
-
-Frontend: React (Vite)
-
-Styling: Tailwind CSS
-
-API: OpenWeatherMap
-
-Storage: Browser localStorage
-
-Deployment: Netlify (planned)
-
-🚀 Getting Started
-Prerequisites
-
-Node.js (v16+)
-
-npm
-
-Installation
+```bash
 # Clone the repository
 git clone https://github.com/yourusername/alx-capstone-weather-dashboard.git
 
@@ -106,90 +83,107 @@ cd alx-capstone-weather-dashboard
 # Install dependencies
 npm install
 
+# Create .env file and add your API key
+echo "VITE_WEATHER_API_KEY=your_api_key_here" > .env
+
 # Start development server
 npm run dev
-
-
 The app will open at http://localhost:5173
 
 📁 Project Structure
+text
 alx-capstone-weather-dashboard/
 ├── public/
-│   ├── index.html
-│   ├── favicon.ico
-│   └── assets/
-│       ├── images/
-│       └── icons/
+│   └── index.html
 ├── src/
 │   ├── components/
-│   │   ├── layout/             # Header, Footer, Container
-│   │   ├── search/             # SearchBar, RecentSearches
-│   │   ├── weather/            # WeatherDisplay, WeatherCard, WeatherIcon, etc.
-│   │   └── common/             # LoadingSpinner, ErrorMessage, Button
-│   ├── hooks/                  # Custom hooks (useWeather, useLocalStorage, useDebounce)
-│   ├── services/               # API calls (weatherService, storageService)
-│   ├── utils/                  # Helper functions (formatters, validators, constants)
-│   ├── App.jsx                 # Main component
-│   └── main.jsx                # Entry point
-├── .env                        # Environment variables (API key)
+│   │   ├── search/
+│   │   │   └── SearchBar.jsx
+│   │   ├── weather/
+│   │   │   ├── WeatherDisplay.jsx
+│   │   │   └── WeatherIcon.jsx
+│   │   └── common/
+│   │       ├── LoadingSpinner.jsx
+│   │       └── ErrorMessage.jsx
+│   ├── services/
+│   │   └── weatherService.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
 ├── .gitignore
 ├── package.json
 ├── README.md
 └── vite.config.js
+🏗️ What I've Built
+Phase 1 Features:
+✅ SearchBar - Fully functional with input validation and error handling
 
-🏗️ What I've Built So Far
+✅ WeatherDisplay - Shows temperature, humidity, wind speed with responsive grid layout
 
-✅ React project with Vite initialized
+✅ WeatherIcon - Dynamic icons from OpenWeatherMap with smart emoji fallback
 
-✅ Tailwind CSS configured
+✅ LoadingSpinner - Visual feedback during API calls
 
-✅ GitHub repo created and initial code pushed
+✅ ErrorMessage - Reusable error component for consistent messaging
 
-✅ SearchBar component built
+✅ Responsive Design - Adapts to mobile, tablet, and desktop screens
 
-✅ WeatherDisplay component built
+✅ API Integration - Real-time weather data from OpenWeatherMap
 
-✅ Connected to OpenWeatherMap API for real-time weather data
+✅ Gradient Background - Professional blue gradient theme
 
-🔨 What I'm Working On Now
+🔨 What I'm Working On Now (Phase 2)
+🔄 Recent Searches - Storing last 5 cities in localStorage
 
-Handling errors for invalid city searches
+🌡️ Temperature Toggle - Switch between °C and °F
 
-Adding loading spinner while fetching data
+🌙 Dark Mode - Theme switcher with localStorage persistence
 
-Preparing for recent searches storage
-
-Planning temperature toggle (Celsius/Fahrenheit)
+📍 Geolocation - Auto-detect user's location for weather
 
 ⚠️ Challenges Faced
-Challenge	How I'm Handling It
-First time using Vite	Following documentation and tutorials
-Understanding project structure	Created component-based structure to scale features
-API key setup	Using .env file and .gitignore
-Getting started with coding	Started small with SearchBar component
+Challenge	Solution
+First time using Vite	Followed documentation and tutorials to understand the setup
+Understanding project structure	Created component-based architecture for scalability
+API key security	Used .env file and .gitignore to protect sensitive keys
+Responsive design	Used Tailwind's breakpoints (sm, md, lg) for grid layout
+Image loading errors	Added emoji fallback for weather icons
+Error handling	Created reusable ErrorMessage component
+
 📝 What I've Learned
+Vite Setup - How to create and configure a React project with Vite
 
-How to create a React project using Vite
+Project Organization - How to structure a scalable React application
 
-How to organize a professional, scalable React project
+Tailwind CSS - Using responsive prefixes and utility classes
 
-Why we use .gitignore to protect sensitive files
+API Integration - Connecting React to external APIs with proper error handling
 
-How to manage dependencies using npm
+Responsive Design - Building layouts that work on all screen sizes
 
-How to connect a React app to an external API
+Component Reusability - Creating components like ErrorMessage and WeatherIcon
 
-🎯 Next Steps (Week 2-3)
+Fallback Strategies - Handling failed image loads with emoji alternatives
 
- Improve error handling (invalid city, network issues)
+🎯 Next Steps
+Week 3-4 Goals:
+Implement recent searches with localStorage
 
- Add loading spinner while fetching weather data
+Add temperature toggle (°C/°F)
 
- Implement recent searches with localStorage
+Create dark/light theme switcher
 
- Add temperature toggle (Celsius/Fahrenheit)
+Add geolocation support
 
- Style the dashboard with Tailwind CSS for responsiveness
+Deploy to Netlify
 
- Push working code to GitHub and test deployment
+Write tests for components
 
+Week 5 Goals (Stretch):
+Add 5-day forecast
+
+Implement animations
+
+Add weather charts
+
+Make it a PWA
