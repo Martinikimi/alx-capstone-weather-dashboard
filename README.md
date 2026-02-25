@@ -17,7 +17,7 @@ A responsive weather dashboard built with React that provides real-time weather 
 
 ## 🚦 Project Status
 
-**Current Phase: Phase 2 Complete - Structure & Scalability**
+**Current Phase: Phase 3 In Progress - Features That Impress**
 
 ### ✅ Completed (Phase 1)
 - [x] React project created with Vite
@@ -42,11 +42,18 @@ A responsive weather dashboard built with React that provides real-time weather 
 - [x] **RecentSearches Component** - Displays clickable city buttons
 - [x] **Empty State UI** - Friendly messages when no searches or no city selected
 
+### ✅ Completed (Phase 3 - So Far)
+- [x] **Temperature Unit Toggle** - Switch between Celsius and Fahrenheit
+- [x] **UnitContext** - Global state management for temperature units
+- [x] **UnitToggle Component** - Reusable toggle buttons in header
+- [x] **Temperature Formatting** - Utility functions for unit conversion
+- [x] **localStorage Persistence** - Saves user preference across sessions
+
 ### 🚀 Features
 
 #### Current Features
 - 🔍 **City Search** - Search for any city worldwide with input validation
-- 🌡️ **Current Temperature** - Real-time temperature in Celsius
+- 🌡️ **Temperature Toggle** - Switch between Celsius and Fahrenheit with localStorage persistence
 - 💧 **Humidity** - Current humidity percentage
 - 💨 **Wind Speed** - Current wind speed in m/s
 - ☁️ **Weather Icons** - Visual weather representation with smart emoji fallback
@@ -55,15 +62,15 @@ A responsive weather dashboard built with React that provides real-time weather 
 - ⚠️ **Error Handling** - User-friendly error messages with specific error types
 - ✅ **Input Validation** - Prevents empty searches
 - 🎣 **Custom Hook** - Clean separation of weather logic using `useWeather`
-- 🔘 **Reusable Button** - Button component with multiple style variants (primary, secondary, danger, disabled)
+- 🔘 **Reusable Button** - Button component with multiple style variants
 - 💾 **Recent Searches** - Saves last 5 searched cities in localStorage, persists after browser close
 - 🔄 **Click to Search** - Click any recent city to search again
 - 🎨 **Empty States** - Friendly messages when no searches or no city selected
 - 📋 **Smart History Management** - No duplicates, oldest removed when limit reached
+- 🌡️ **Unit Context** - Global temperature unit management with toggle
 
 #### Coming Soon (Phase 3)
-- 🌡️ **Temperature Toggle** - Switch between Celsius and Fahrenheit
-- 🌙 **Dark/Light Mode** - Theme switcher
+- 🌙 **Dark/Light Mode** - Theme switcher with localStorage
 - 📍 **Geolocation** - Get weather for current location
 - 📅 **5-Day Forecast** - Extended weather forecast
 - 📊 **Weather Charts** - Visual temperature trends
@@ -75,6 +82,7 @@ A responsive weather dashboard built with React that provides real-time weather 
 - **Styling:** Tailwind CSS
 - **API:** OpenWeatherMap
 - **Storage:** Browser localStorage
+- **State Management:** React Context API
 - **Deployment:** Netlify (planned)
 
 ## 🚀 Getting Started
@@ -111,20 +119,25 @@ alx-capstone-weather-dashboard/
 │   ├── components/
 │   │   ├── search/
 │   │   │   ├── SearchBar.jsx
-│   │   │   └── RecentSearches.jsx    # Clickable recent city list
+│   │   │   └── RecentSearches.jsx
 │   │   ├── weather/
 │   │   │   ├── WeatherDisplay.jsx
 │   │   │   └── WeatherIcon.jsx
 │   │   └── common/
-│   │       ├── Button.jsx             # Reusable button with variants
-│   │       ├── LoadingSpinner.jsx     # Loading indicator
-│   │       ├── ErrorMessage.jsx       # Reusable error display
-│   │       └── EmptyState.jsx         # Empty state UI for first visit
+│   │       ├── Button.jsx
+│   │       ├── LoadingSpinner.jsx
+│   │       ├── ErrorMessage.jsx
+│   │       ├── EmptyState.jsx
+│   │       └── UnitToggle.jsx          # Temperature unit toggle
+│   ├── context/
+│   │   └── UnitContext.jsx              # Unit state management
 │   ├── hooks/
-│   │   └── useWeather.js               # Custom hook for weather logic
+│   │   └── useWeather.js
 │   ├── services/
-│   │   ├── weatherService.js           # Centralized API calls
-│   │   └── storageService.js           # localStorage operations
+│   │   ├── weatherService.js
+│   │   └── storageService.js
+│   ├── utils/
+│   │   └── formatters.js                # Temperature conversion utilities
 │   ├── App.jsx
 │   └── main.jsx
 ├── .env
@@ -134,135 +147,64 @@ alx-capstone-weather-dashboard/
 └── vite.config.js
 🏗️ What I've Built
 Phase 1 Features:
-✅ SearchBar - Fully functional with input validation and error handling
+✅ SearchBar - Input validation and error handling
 
-✅ WeatherDisplay - Shows temperature, humidity, wind speed with responsive grid layout
+✅ WeatherDisplay - Responsive grid layout for weather data
 
-✅ WeatherIcon - Dynamic icons from OpenWeatherMap with smart emoji fallback
+✅ WeatherIcon - Dynamic icons with emoji fallback
 
 ✅ LoadingSpinner - Visual feedback during API calls
 
-✅ ErrorMessage - Reusable error component for consistent messaging
+✅ ErrorMessage - Reusable error component
 
-✅ Responsive Design - Adapts to mobile, tablet, and desktop screens
+✅ Responsive Design - Works on all devices
 
-✅ API Integration - Real-time weather data from OpenWeatherMap
+✅ API Integration - Real-time weather data
 
-✅ Gradient Background - Professional blue gradient theme
+Phase 2 Features:
+✅ Centralized API Service - Organized API calls with error handling
 
-Phase 2 Features (Completed):
-✅ Centralized API Service - weatherService.js now has:
+✅ Custom Hook - useWeather for clean logic separation
 
-Base configuration object
+✅ Reusable Button - Variants for different use cases
 
-Consistent error handling with user-friendly messages
+✅ Storage Service - localStorage management
 
-Prepared for future endpoints (geolocation, forecast)
+✅ Recent Searches - Persistent search history
 
-Specific error types (404, 401, 429, network errors)
+✅ Empty State UI - Friendly first-time experience
 
-✅ Custom Hook - useWeather.js:
+Phase 3 Features (New):
+✅ Temperature Unit Toggle - Switch between °C and °F
 
-Separates all weather logic from UI
+Context API for global state
 
-Manages weatherData, loading, and error states
+Persistent user preference in localStorage
 
-Provides searchCity function
+Real-time temperature conversion
 
-Makes App.jsx clean and focused on UI only
+Clean toggle UI in header
 
-✅ Reusable Button Component - Button.jsx:
+Utility functions for formatting
 
-Variants: primary (blue), secondary (gray), danger (red), disabled
+🔨 What I'm Working On Now (Phase 3 - Remaining)
+🌙 Dark/Light Mode - Theme switcher with localStorage
 
-Consistent styling across the app
-
-Easy to use: <Button variant="primary">Search</Button>
-
-Supports onClick, type, and disabled props
-
-✅ Storage Service - storageService.js:
-
-getRecentCities() - Load saved cities
-
-saveRecentCity() - Save with duplicate prevention and 5-city limit
-
-clearRecentCities() - Clear all searches (for future use)
-
-✅ RecentSearches Component - RecentSearches.jsx:
-
-Displays list of recent cities as clickable buttons
-
-Shows empty state message when no searches
-
-Click any city to search again instantly
-
-✅ Empty State UI - EmptyState.jsx:
-
-Friendly welcome message for first-time users
-
-Cute weather icon
-
-Suggestions for cities to try
-
-Appears when no city is selected
-
-🔨 What I'm Working On Now (Phase 3)
-🌡️ Temperature Toggle - Switch between °C and °F
-
-🌙 Dark Mode - Theme switcher with localStorage persistence
-
-📍 Geolocation - Auto-detect user's location for weather
+📍 Geolocation - Auto-detect user's location
 
 📅 5-Day Forecast - Extended weather forecast
 
 📊 Weather Charts - Visual temperature trends
 
-⚠️ Challenges Faced
-Challenge	Solution
-First time using Vite	Followed documentation and tutorials to understand the setup
-Understanding project structure	Created component-based architecture for scalability
-API key security	Used .env file and .gitignore to protect sensitive keys
-Responsive design	Used Tailwind's breakpoints (sm, md, lg) for grid layout
-Image loading errors	Added emoji fallback for weather icons
-Error handling	Created reusable ErrorMessage component
-Separating logic from UI	Created custom useWeather hook
-Building reusable components	Created Button component with variant props
-API error messages	Centralized error handling with user-friendly messages
-localStorage management	Created storageService with duplicate prevention and 5-city limit
-Empty states	Added EmptyState component for better UX
-📝 What I've Learned
-Vite Setup - How to create and configure a React project with Vite
-
-Project Organization - How to structure a scalable React application
-
-Tailwind CSS - Using responsive prefixes and utility classes
-
-API Integration - Connecting React to external APIs with proper error handling
-
-Responsive Design - Building layouts that work on all screen sizes
-
-Component Reusability - Creating components like ErrorMessage, Button, and WeatherIcon
-
-Fallback Strategies - Handling failed image loads with emoji alternatives
-
-Custom Hooks - Separating logic from UI for cleaner code
-
-Centralized API Services - Organizing API calls in one place for maintainability
-
-Error Handling Best Practices - Creating specific, user-friendly error messages
-
-localStorage - Persisting data across browser sessions
-
-Empty States - Improving UX with helpful messages instead of blank screens
+⚠️ Advanced Error Handling - Rate limits, offline detection
 
 🎯 Next Steps
 Week 4-5 Goals:
-Add temperature toggle (°C/°F)
-
 Create dark/light theme switcher
 
 Add geolocation support
+
+Implement advanced error handling
 
 Deploy to Netlify
 
