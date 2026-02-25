@@ -2,10 +2,12 @@ import SearchBar from "./components/search/SearchBar"
 import WeatherDisplay from "./components/weather/WeatherDisplay"
 import LoadingSpinner from "./components/common/LoadingSpinner"
 import ErrorMessage from "./components/common/ErrorMessage"
+import RecentSearches from "./components/search/RecentSearches" 
 import { useWeather } from "./hooks/useWeather" 
 
 function App() {
-  const { weatherData, loading, error, searchCity } = useWeather()
+  // recentSearches from the hook!
+  const { weatherData, loading, error, searchCity, recentSearches } = useWeather()
   
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100">
@@ -21,8 +23,13 @@ function App() {
         </div>
 
         <div className="max-w-md mx-auto w-full mb-6 sm:mb-8">
-          {/*  Use the search function from our hook */}
           <SearchBar onSearch={searchCity} />
+          
+          {/* Show recent searches below search bar */}
+          <RecentSearches 
+            searches={recentSearches} 
+            onSelectCity={searchCity} 
+          />
         </div>
 
         <div className="mt-4 sm:mt-6 lg:mt-8">
