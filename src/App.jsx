@@ -2,11 +2,11 @@ import SearchBar from "./components/search/SearchBar"
 import WeatherDisplay from "./components/weather/WeatherDisplay"
 import LoadingSpinner from "./components/common/LoadingSpinner"
 import ErrorMessage from "./components/common/ErrorMessage"
-import RecentSearches from "./components/search/RecentSearches" 
+import RecentSearches from "./components/search/RecentSearches"
+import EmptyState from "./components/common/EmptyState" 
 import { useWeather } from "./hooks/useWeather" 
 
 function App() {
-  // recentSearches from the hook!
   const { weatherData, loading, error, searchCity, recentSearches } = useWeather()
   
   return (
@@ -25,7 +25,7 @@ function App() {
         <div className="max-w-md mx-auto w-full mb-6 sm:mb-8">
           <SearchBar onSearch={searchCity} />
           
-          {/* Show recent searches below search bar */}
+          {/* Recent searches */}
           <RecentSearches 
             searches={recentSearches} 
             onSelectCity={searchCity} 
@@ -35,11 +35,13 @@ function App() {
         <div className="mt-4 sm:mt-6 lg:mt-8">
           {loading ? (
             <LoadingSpinner />
+          ) : error ? (
+            <ErrorMessage message={error} />
+          ) : weatherData ? (
+            <WeatherDisplay weatherData={weatherData} />
           ) : (
-            <>
-              {error && <ErrorMessage message={error} />}
-              <WeatherDisplay weatherData={weatherData} />
-            </>
+            // Show empty state when nothing is loading, no error, and no data
+            <EmptyState />
           )}
         </div>
       </div>

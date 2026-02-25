@@ -1,7 +1,8 @@
 import WeatherIcon from "./WeatherIcon"
 
 function WeatherDisplay({ weatherData }) {
-  if (!weatherData) return null // show nothing if no data
+  // If no data, show nothing 
+  if (!weatherData) return null
 
   const { name, main, wind, weather } = weatherData
   const weatherInfo = weather[0]
@@ -19,7 +20,6 @@ function WeatherDisplay({ weatherData }) {
       
       <div className="p-4 sm:p-6 lg:p-8">
         
-        {/* Show weather icon + condition together */}
         <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
           <WeatherIcon iconCode={iconCode} description={description} />
           <p className="text-gray-700 text-base sm:text-lg lg:text-xl capitalize">
