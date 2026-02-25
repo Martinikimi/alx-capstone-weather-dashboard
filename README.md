@@ -17,7 +17,7 @@ A responsive weather dashboard built with React that provides real-time weather 
 
 ## 🚦 Project Status
 
-**Current Phase: Phase 1 Complete - Core Features & Responsive Design**
+**Current Phase: Phase 2 In Progress - Structure & Scalability**
 
 ### ✅ Completed (Phase 1)
 - [x] React project created with Vite
@@ -33,6 +33,11 @@ A responsive weather dashboard built with React that provides real-time weather 
 - [x] Responsive design (works on mobile, tablet, and desktop)
 - [x] Gradient background and polished card design
 
+### ✅ Completed (Phase 2 - So Far)
+- [x] **Centralized API Logic** - Clean, organized weatherService with base config and consistent error handling
+- [x] **Custom Hook** - Created `useWeather` hook to separate logic from UI
+- [x] **Reusable Button Component** - Button with variants (primary, secondary, danger, disabled)
+
 ### 🚀 Features
 
 #### Current Features
@@ -43,8 +48,10 @@ A responsive weather dashboard built with React that provides real-time weather 
 - ☁️ **Weather Icons** - Visual weather representation with smart fallback emojis
 - 📱 **Fully Responsive** - Works perfectly on phones, tablets, and desktops
 - ⏳ **Loading States** - Spinner shows while fetching data
-- ⚠️ **Error Handling** - User-friendly error messages
+- ⚠️ **Error Handling** - User-friendly error messages with specific error types
 - ✅ **Input Validation** - Prevents empty searches
+- 🎣 **Custom Hook** - Clean separation of weather logic using `useWeather`
+- 🔘 **Reusable Button** - Button component with multiple style variants
 
 #### Coming Soon (Phase 2)
 - 🔄 **Recent Searches** - Save last 5 searched cities in localStorage
@@ -103,10 +110,13 @@ alx-capstone-weather-dashboard/
 │   │   │   ├── WeatherDisplay.jsx
 │   │   │   └── WeatherIcon.jsx
 │   │   └── common/
-│   │       ├── LoadingSpinner.jsx
-│   │       └── ErrorMessage.jsx
+│   │       ├── Button.jsx           # Reusable button with variants
+│   │       ├── LoadingSpinner.jsx   # Loading indicator
+│   │       └── ErrorMessage.jsx     # Reusable error display
+│   ├── hooks/
+│   │   └── useWeather.js            # Custom hook for weather logic
 │   ├── services/
-│   │   └── weatherService.js
+│   │   └── weatherService.js        # Centralized API calls
 │   ├── App.jsx
 │   └── main.jsx
 ├── .env
@@ -132,7 +142,38 @@ Phase 1 Features:
 
 ✅ Gradient Background - Professional blue gradient theme
 
-🔨 What I'm Working On Now (Phase 2)
+Phase 2 Features (Completed):
+✅ Centralized API Service - weatherService.js now has:
+
+Base configuration object
+
+Consistent error handling with user-friendly messages
+
+Prepared for future endpoints (geolocation, forecast)
+
+Specific error types (404, 401, 429, network errors)
+
+✅ Custom Hook - useWeather.js:
+
+Separates all weather logic from UI
+
+Manages weatherData, loading, and error states
+
+Provides searchCity function
+
+Makes App.jsx clean and focused on UI only
+
+✅ Reusable Button Component - Button.jsx:
+
+Variants: primary (blue), secondary (gray), danger (red), disabled
+
+Consistent styling across the app
+
+Easy to use: <Button variant="primary">Search</Button>
+
+Supports onClick, type, and disabled props
+
+🔨 What I'm Working On Now (Phase 2 - Remaining)
 🔄 Recent Searches - Storing last 5 cities in localStorage
 
 🌡️ Temperature Toggle - Switch between °C and °F
@@ -140,30 +181,6 @@ Phase 1 Features:
 🌙 Dark Mode - Theme switcher with localStorage persistence
 
 📍 Geolocation - Auto-detect user's location for weather
-
-⚠️ Challenges Faced
-Challenge	Solution
-First time using Vite	Followed documentation and tutorials to understand the setup
-Understanding project structure	Created component-based architecture for scalability
-API key security	Used .env file and .gitignore to protect sensitive keys
-Responsive design	Used Tailwind's breakpoints (sm, md, lg) for grid layout
-Image loading errors	Added emoji fallback for weather icons
-Error handling	Created reusable ErrorMessage component
-
-📝 What I've Learned
-Vite Setup - How to create and configure a React project with Vite
-
-Project Organization - How to structure a scalable React application
-
-Tailwind CSS - Using responsive prefixes and utility classes
-
-API Integration - Connecting React to external APIs with proper error handling
-
-Responsive Design - Building layouts that work on all screen sizes
-
-Component Reusability - Creating components like ErrorMessage and WeatherIcon
-
-Fallback Strategies - Handling failed image loads with emoji alternatives
 
 🎯 Next Steps
 Week 3-4 Goals:
