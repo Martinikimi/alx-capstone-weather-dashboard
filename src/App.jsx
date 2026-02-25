@@ -25,7 +25,7 @@ function App() {
 
     } catch (err) {
       setWeatherData(null)   // clear previous data
-      setError("City not found or API error") // show error
+      setError(err.message) // show error
       setLoading(false) // Stop loading - hide spinner when error happens
     }
   }
