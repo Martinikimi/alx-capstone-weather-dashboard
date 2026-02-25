@@ -1,7 +1,9 @@
 import WeatherIcon from "./WeatherIcon"
+import { useUnit } from "../../context/UnitContext" 
+import { formatTemperature } from "../../utils/formatters" 
 
 function WeatherDisplay({ weatherData }) {
-  // If no data, show nothing 
+  const { unit } = useUnit() 
   if (!weatherData) return null
 
   const { name, main, wind, weather } = weatherData
@@ -34,7 +36,9 @@ function WeatherDisplay({ weatherData }) {
               Temperature
             </p>
             <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800">
-              {main.temp} °C
+
+              {/*  Use formatter instead of hardcoded °C */}
+              {formatTemperature(main.temp, unit)}
             </p>
           </div>
           
