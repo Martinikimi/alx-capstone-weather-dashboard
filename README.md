@@ -42,18 +42,26 @@ A responsive weather dashboard built with React that provides real-time weather 
 - [x] **RecentSearches Component** - Displays clickable city buttons
 - [x] **Empty State UI** - Friendly messages when no searches or no city selected
 
-### ✅ Completed (Phase 3 - So Far)
+### ✅ Completed (Phase 3)
 - [x] **Temperature Unit Toggle** - Switch between Celsius and Fahrenheit
-- [x] **UnitContext** - Global state management for temperature units
-- [x] **UnitToggle Component** - Reusable toggle buttons in header
-- [x] **Temperature Formatting** - Utility functions for unit conversion
-- [x] **localStorage Persistence** - Saves user preference across sessions
+  - UnitContext for global state management
+  - UnitToggle component in header
+  - localStorage persistence
+  - Utility functions for conversion
+- [x] **Dark/Light Theme Switcher** - Complete dark mode implementation
+  - ThemeContext with class-based dark mode
+  - ThemeToggle button (🌙/☀️)
+  - localStorage persistence
+  - Tailwind v3 configuration with `darkMode: 'class'`
+  - Dark mode styles for all components
+  - Fixed Tailwind v4 compatibility issues
 
 ### 🚀 Features
 
 #### Current Features
 - 🔍 **City Search** - Search for any city worldwide with input validation
 - 🌡️ **Temperature Toggle** - Switch between Celsius and Fahrenheit with localStorage persistence
+- 🌙 **Dark/Light Mode** - Complete theme switcher with localStorage persistence
 - 💧 **Humidity** - Current humidity percentage
 - 💨 **Wind Speed** - Current wind speed in m/s
 - ☁️ **Weather Icons** - Visual weather representation with smart emoji fallback
@@ -67,19 +75,19 @@ A responsive weather dashboard built with React that provides real-time weather 
 - 🔄 **Click to Search** - Click any recent city to search again
 - 🎨 **Empty States** - Friendly messages when no searches or no city selected
 - 📋 **Smart History Management** - No duplicates, oldest removed when limit reached
-- 🌡️ **Unit Context** - Global temperature unit management with toggle
+- 🎭 **Context API** - Global state management for units and theme
 
 #### Coming Soon (Phase 3)
-- 🌙 **Dark/Light Mode** - Theme switcher with localStorage
 - 📍 **Geolocation** - Get weather for current location
 - 📅 **5-Day Forecast** - Extended weather forecast
 - 📊 **Weather Charts** - Visual temperature trends
 - ✨ **Animations** - Smooth transitions and effects
+- ⚠️ **Advanced Error Handling** - Rate limits, offline detection, invalid API key
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** React 18 + Vite
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS v3
 - **API:** OpenWeatherMap
 - **Storage:** Browser localStorage
 - **State Management:** React Context API
@@ -128,20 +136,24 @@ alx-capstone-weather-dashboard/
 │   │       ├── LoadingSpinner.jsx
 │   │       ├── ErrorMessage.jsx
 │   │       ├── EmptyState.jsx
-│   │       └── UnitToggle.jsx          # Temperature unit toggle
+│   │       ├── UnitToggle.jsx
+│   │       └── ThemeToggle.jsx           # Dark mode toggle
 │   ├── context/
-│   │   └── UnitContext.jsx              # Unit state management
+│   │   ├── UnitContext.jsx
+│   │   └── ThemeContext.jsx               # Dark mode state management
 │   ├── hooks/
 │   │   └── useWeather.js
 │   ├── services/
 │   │   ├── weatherService.js
 │   │   └── storageService.js
 │   ├── utils/
-│   │   └── formatters.js                # Temperature conversion utilities
+│   │   └── formatters.js
 │   ├── App.jsx
 │   └── main.jsx
 ├── .env
 ├── .gitignore
+├── tailwind.config.js                      # Tailwind v3 with darkMode: 'class'
+├── postcss.config.js
 ├── package.json
 ├── README.md
 └── vite.config.js
@@ -174,8 +186,8 @@ Phase 2 Features:
 
 ✅ Empty State UI - Friendly first-time experience
 
-Phase 3 Features (New):
-✅ Temperature Unit Toggle - Switch between °C and °F
+Phase 3 Features (Completed):
+✅ Temperature Unit Toggle
 
 Context API for global state
 
@@ -185,23 +197,87 @@ Real-time temperature conversion
 
 Clean toggle UI in header
 
-Utility functions for formatting
+✅ Dark/Light Theme Switcher
+
+ThemeContext with class-based dark mode
+
+Manual theme toggle (not system-dependent)
+
+localStorage persistence
+
+Tailwind v3 with darkMode: 'class' configuration
+
+Dark mode styles for all components
+
+Fixed Tailwind v4 compatibility issues
+
+Smooth transitions between themes
 
 🔨 What I'm Working On Now (Phase 3 - Remaining)
-🌙 Dark/Light Mode - Theme switcher with localStorage
-
 📍 Geolocation - Auto-detect user's location
 
 📅 5-Day Forecast - Extended weather forecast
 
 📊 Weather Charts - Visual temperature trends
 
-⚠️ Advanced Error Handling - Rate limits, offline detection
+⚠️ Advanced Error Handling - Rate limits, offline detection, invalid API key
+
+✨ Animations - Smooth transitions and effects
+
+⚠️ Challenges Faced
+Challenge	Solution
+First time using Vite	Followed documentation and tutorials
+Project structure	Created scalable component architecture
+API key security	Used .env with .gitignore
+Responsive design	Tailwind breakpoints (sm, md, lg)
+Image loading errors	Emoji fallback strategy
+Error handling	Reusable ErrorMessage component
+Logic/UI separation	Custom useWeather hook
+Reusable components	Button with variant props
+localStorage management	Dedicated storage service
+Empty states	EmptyState component
+Unit conversion	Context API + utility functions
+User preferences	localStorage persistence
+Tailwind v4 compatibility	Downgraded to stable Tailwind v3
+Dark mode configuration	Set darkMode: 'class' in config
+Theme persistence	ThemeContext with localStorage
+📝 What I've Learned
+Vite Setup - Modern React tooling
+
+Project Organization - Scalable architecture
+
+Tailwind CSS - Responsive utility classes, dark mode configuration
+
+API Integration - Error handling best practices
+
+Responsive Design - Mobile-first approach
+
+Component Reusability - DRY principles
+
+Fallback Strategies - Graceful degradation
+
+Custom Hooks - Logic separation
+
+Centralized Services - Maintainable code
+
+localStorage - Cross-session persistence
+
+Empty States - UX improvement
+
+Context API - Global state management
+
+Utility Functions - Clean, testable code
+
+Dark Mode Implementation - Class-based theming with Tailwind
+
+Theme Switching - Manual control vs system preferences
+
+PostCSS Configuration - Proper plugin setup
+
+Version Management - Handling breaking changes in dependencies
 
 🎯 Next Steps
 Week 4-5 Goals:
-Create dark/light theme switcher
-
 Add geolocation support
 
 Implement advanced error handling
