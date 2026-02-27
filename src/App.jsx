@@ -9,10 +9,17 @@ import ThemeToggle from "./components/common/ThemeToggle"
 import { UnitProvider } from "./context/UnitContext"
 import { ThemeProvider } from "./context/ThemeContext"
 import { useWeather } from "./hooks/useWeather"
+import { useGeolocation } from "./hooks/useGeolocation" 
 
 function AppContent() {
   const { weatherData, loading, error, searchCity, recentSearches } = useWeather()
- 
+  const { getUserLocation, loading: locLoading, error: locError } = useGeolocation() 
+
+  // Handle successful location fetch
+  const handleLocationSuccess = (data) => {
+    searchCity(data.name)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -34,6 +41,27 @@ function AppContent() {
         </div>
 
         <div className="max-w-md mx-auto w-full mb-6 sm:mb-8">
+          
+          <div className="mb-2 text-right">
+            <button
+              onClick={() => getUserLocation(handleLocationSuccess)}
+              disabled={locLoading}
+              className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 ml-auto"
+            >
+              <span className="text-lg">⏺</span>
+              {locLoading ? "Getting location..." : "Current Location"}
+              {locLoading && <LoadingSpinner />}
+            </button>
+            {/* Show location errors if any */}
+            {locError && (
+              <ErrorMessage 
+                title={locError.title} 
+                message={locError.message} 
+                className="mt-2 text-sm"
+              />
+            )}
+          </div>
+
           <SearchBar onSearch={searchCity} />
           <RecentSearches
             searches={recentSearches}
@@ -42,10 +70,9 @@ function AppContent() {
         </div>
 
         <div className="mt-4 sm:mt-6 lg:mt-8">
-          {loading ? (
+          {loading || locLoading ? (
             <LoadingSpinner />
           ) : error ? (
-            // 👈 UPDATED: Now passing title and message separately
             <ErrorMessage title={error.title} message={error.message} />
           ) : weatherData ? (
             <WeatherDisplay weatherData={weatherData} />

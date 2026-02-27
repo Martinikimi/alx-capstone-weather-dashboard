@@ -2,7 +2,7 @@
 const API_CONFIG = {
   BASE_URL: 'https://api.openweathermap.org/data/2.5',
   API_KEY: import.meta.env.VITE_WEATHER_API_KEY,
-  UNITS: 'metric'
+  UNITS: 'metric' // 'metric' for Celsius, 'imperial' for Fahrenheit
 }
 
 // Helper function to handle API responses consistently
@@ -46,7 +46,7 @@ export const getWeatherByCity = async (city) => {
     
     // Enhance network errors with status
     if (error.message === 'Failed to fetch') {
-      error.status = 0 // Custom status for network errors
+      error.status = 0 
     }
     
     throw error
