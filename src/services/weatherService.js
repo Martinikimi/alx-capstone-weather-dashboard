@@ -46,7 +46,7 @@ export const getWeatherByCity = async (city) => {
     
     // Enhance network errors with status
     if (error.message === 'Failed to fetch') {
-      error.status = 0 
+      error.status = 0 // Custom status for network errors
     }
     
     throw error
@@ -72,6 +72,21 @@ export const getWeatherByCoords = async (lat, lon) => {
 export const getForecastByCity = async (city) => {
   try {
     const url = `${API_CONFIG.BASE_URL}/forecast?q=${encodeURIComponent(city)}&appid=${API_CONFIG.API_KEY}&units=${API_CONFIG.UNITS}`
+    
+    const response = await fetch(url)
+    const data = await handleResponse(response)
+    
+    return data
+  } catch (error) {
+    console.error('Forecast API Error:', error)
+    throw error
+  }
+}
+
+// Get 5-day forecast by coordinates 
+export const getForecastByCoords = async (lat, lon) => {
+  try {
+    const url = `${API_CONFIG.BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_CONFIG.API_KEY}&units=${API_CONFIG.UNITS}`
     
     const response = await fetch(url)
     const data = await handleResponse(response)

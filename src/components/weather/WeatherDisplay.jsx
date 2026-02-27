@@ -1,9 +1,15 @@
+import { useState, useEffect } from "react"
 import WeatherIcon from "./WeatherIcon"
+import ForecastDisplay from "./ForecastDisplay"
 import { useUnit } from "../../context/UnitContext"
 import { formatTemperature } from "../../utils/formatters"
+import { getForecastByCity } from "../../services/weatherService"
 
 function WeatherDisplay({ weatherData }) {
   const { unit } = useUnit()
+  const [forecastData, setForecastData] = useState(null)
+  const [loadingForecast, setLoadingForecast] = useState(false)
+  
   if (!weatherData) return null
 
   const { name, main, wind, weather, sys, visibility, clouds } = weatherData
@@ -11,7 +17,26 @@ function WeatherDisplay({ weatherData }) {
   const iconCode = weatherInfo.icon
   const description = weatherInfo.description
 
-  // Format sunrise/sunst from Unix timestamps
+  // Fetch forecast when weather data changes
+  useEffect(() => {
+    const fetchForecast = async () => {
+      if (name) {
+        setLoadingForecast(true)
+        try {
+          const data = await getForecastByCity(name)
+          setForecastData(data)
+        } catch (error) {
+          console.error('Failed to fetch forecast:', error)
+        } finally {
+          setLoadingForecast(false)
+        }
+      }
+    }
+    
+    fetchForecast()
+  }, [name])
+
+  // Format sunrise/sunset from Unix timestamps
   const sunrise = new Date(sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   const sunset = new Date(sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
@@ -38,76 +63,55 @@ function WeatherDisplay({ weatherData }) {
       <div className="p-4 sm:p-6 lg:p-8">
         
         {/* Weather Icon and Description */}
-        <div className="flex items-center gap-3 sm:gap-4 mb-6">
+        <div className="flex items-center gap-3 sm:gap-4 mb-4">
           <WeatherIcon iconCode={iconCode} description={description} />
           <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg lg:text-xl capitalize">
             {description}
           </p>
         </div>
         
-        {/* Weather Details Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
-          {/* Temperature Card */}
-          <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">🌡️ Temperature</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">
-              {formatTemperature(main.temp, unit)}
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Feels like: {formatTemperature(main.feels_like, unit)}
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Min: {formatTemperature(main.temp_min, unit)} | Max: {formatTemperature(main.temp_max, unit)}
-            </p>
-          </div>
-          
-          {/* Humidity Card */}
-          <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">💧 Humidity</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">{main.humidity}%</p>
-          </div>
-          
-          {/* Wind Card */}
-          <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">💨 Wind</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">{wind.speed} m/s</p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Direction: {getWindDirection(wind.deg)} ({wind.deg}°)
-            </p>
-          </div>
-          
-          {/* Pressure Card */}
-          <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">📊 Pressure</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">{main.pressure} hPa</p>
-          </div>
-          
-          {/* Visibility Card */}
-          <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">👁️ Visibility</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">{visibilityKm} km</p>
-          </div>
-          
-          {/* Clouds Card */}
-          <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">☁️ Clouds</p>
-            <p className="text-xl font-semibold text-gray-800 dark:text-white">{clouds.all}% coverage</p>
-          </div>
-          
-          {/* Sunrise/Sunset Card */}
-          <div className="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-lg sm:col-span-2">
-            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">🌅 Sun Schedule</p>
-            <div className="flex justify-between">
-              <p className="text-gray-800 dark:text-white">
-                <span className="font-semibold">Sunrise:</span> {sunrise}
+        {/* Current Weather Details */}
+        <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Temperature</p>
+              <p className="text-2xl font-semibold text-gray-800 dark:text-white">
+                {formatTemperature(main.temp, unit)}
               </p>
-              <p className="text-gray-800 dark:text-white">
-                <span className="font-semibold">Sunset:</span> {sunset}
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Feels like: {formatTemperature(main.feels_like, unit)}
               </p>
             </div>
+            <div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Humidity</p>
+              <p className="text-2xl font-semibold text-gray-800 dark:text-white">{main.humidity}%</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Wind</p>
+              <p className="text-lg font-semibold text-gray-800 dark:text-white">{wind.speed} m/s</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {getWindDirection(wind.deg)} ({wind.deg}°)
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Visibility</p>
+              <p className="text-lg font-semibold text-gray-800 dark:text-white">{visibilityKm} km</p>
+            </div>
+          </div>
+          
+          {/* Sunrise/Sunset */}
+          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600 flex justify-between text-sm text-gray-600 dark:text-gray-400">
+            <span>Sunrise: {sunrise}</span>
+            <span>Sunset: {sunset}</span>
           </div>
         </div>
+        
+        {/* 5-Day Forecast */}
+        {loadingForecast ? (
+          <div className="text-center py-4 text-gray-500">Loading forecast...</div>
+        ) : (
+          <ForecastDisplay forecastData={forecastData} />
+        )}
       </div>
     </div>
   )
