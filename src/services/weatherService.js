@@ -1,23 +1,31 @@
-
+// Base configuration
 const API_CONFIG = {
   BASE_URL: 'https://api.openweathermap.org/data/2.5',
   API_KEY: import.meta.env.VITE_WEATHER_API_KEY,
-  UNITS: 'metric' // 'metric' for Celsius, 'imperial' for Fahrenheit
+  UNITS: 'metric'
 }
 
 // Helper function to handle API responses consistently
 const handleResponse = async (response) => {
   if (!response.ok) {
-    // Handle different error types with user-friendly messages
+    // Create error object with status code
+    const error = new Error()
+    error.status = response.status
+    
+    // Add appropriate message based on status
     if (response.status === 404) {
-      throw new Error("City not found. Please check the spelling and try again.")
+      error.message = "City not found"
     } else if (response.status === 401) {
-      throw new Error("API key error. Please check your configuration.")
+      error.message = "Invalid API key"
     } else if (response.status === 429) {
-      throw new Error("Too many requests. Please wait a moment and try again.")
+      error.message = "Rate limit exceeded"
+    } else if (response.status >= 500) {
+      error.message = "Server error"
     } else {
-      throw new Error("Unable to fetch weather data. Please try again later.")
+      error.message = "Unknown error"
     }
+    
+    throw error
   }
   
   const data = await response.json()
@@ -35,14 +43,13 @@ export const getWeatherByCity = async (city) => {
     return data
   } catch (error) {
     console.error('Weather API Error:', error)
-    // Re-throw with user-friendly message if not already formatted
-    if (error.message.includes("City not found") || 
-        error.message.includes("API key") || 
-        error.message.includes("Too many requests")) {
-      throw error
-    } else {
-      throw new Error("Network error. Please check your internet connection.")
+    
+    // Enhance network errors with status
+    if (error.message === 'Failed to fetch') {
+      error.status = 0 // Custom status for network errors
     }
+    
+    throw error
   }
 }
 
@@ -57,7 +64,7 @@ export const getWeatherByCoords = async (lat, lon) => {
     return data
   } catch (error) {
     console.error('Weather API Error:', error)
-    throw new Error("Unable to fetch weather for your location.")
+    throw error
   }
 }
 

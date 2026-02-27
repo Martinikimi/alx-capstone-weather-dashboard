@@ -10,7 +10,6 @@ import { UnitProvider } from "./context/UnitContext"
 import { ThemeProvider } from "./context/ThemeContext"
 import { useWeather } from "./hooks/useWeather"
 
-
 function AppContent() {
   const { weatherData, loading, error, searchCity, recentSearches } = useWeather()
  
@@ -34,7 +33,6 @@ function AppContent() {
           </div>
         </div>
 
-
         <div className="max-w-md mx-auto w-full mb-6 sm:mb-8">
           <SearchBar onSearch={searchCity} />
           <RecentSearches
@@ -43,12 +41,12 @@ function AppContent() {
           />
         </div>
 
-
         <div className="mt-4 sm:mt-6 lg:mt-8">
           {loading ? (
             <LoadingSpinner />
           ) : error ? (
-            <ErrorMessage message={error} />
+            // 👈 UPDATED: Now passing title and message separately
+            <ErrorMessage title={error.title} message={error.message} />
           ) : weatherData ? (
             <WeatherDisplay weatherData={weatherData} />
           ) : (
@@ -60,7 +58,6 @@ function AppContent() {
   )
 }
 
-
 function App() {
   return (
     <ThemeProvider>
@@ -70,6 +67,5 @@ function App() {
     </ThemeProvider>
   )
 }
-
 
 export default App

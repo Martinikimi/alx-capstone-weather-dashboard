@@ -1,56 +1,53 @@
-import { useState, useEffect } from "react" // 
+import { useState, useEffect } from "react"
 import { getWeatherByCity } from "../services/weatherService"
-import { getRecentCities, saveRecentCity } from "../services/storageService" 
+import { getRecentCities, saveRecentCity } from "../services/storageService"
+import { getErrorMessage } from "../utils/errorMessages"
 
 export function useWeather() {
-  // State for weather data, loading, and errors
   const [weatherData, setWeatherData] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  // 👇 NEW: State for recent searches
+  const [error, setError] = useState(null) 
   const [recentSearches, setRecentSearches] = useState([])
 
-  //  Load recent searches when the app starts
   useEffect(() => {
     const cities = getRecentCities()
     setRecentSearches(cities)
-  }, []) // Empty array means "run once when component mounts"
+  }, [])
 
-  // Function to search for a city
   const searchCity = async (city) => {
     try {
-      // Clear previous errors and start loading
-      setError("")
+      setError(null) 
       setLoading(true)
-      console.log("Loading is:", true)
 
-      // Fetch weather data
       const data = await getWeatherByCity(city)
       
-      // Save data and stop loading
       setWeatherData(data)
       
-      //  Save to recent searches after successful search
-      const updatedCities = saveRecentCity(city)
-      setRecentSearches(updatedCities)
+      const updated = saveRecentCity(city)
+      setRecentSearches(updated)
       
       setLoading(false)
-      console.log("Loading is:", false)
 
     } catch (err) {
-      // Handle errors
       setWeatherData(null)
-      setError(err.message)
+      
+      // Get user-friendly error object
+      const errorInfo = getErrorMessage(err)
+      setError({
+        title: errorInfo.title,
+        message: errorInfo.message,
+        raw: err.message
+      })
+      
       setLoading(false)
     }
   }
 
-
   return {
     weatherData,
     loading,
-    error,
+    error, 
     searchCity,
-    recentSearches 
+    recentSearches
   }
 }
