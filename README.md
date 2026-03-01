@@ -1,144 +1,163 @@
-# 🌤️ ALX Capstone: Weather Dashboard
+🌤️ ALX Capstone: Weather Dashboard
+A responsive weather dashboard built with React that provides real-time weather information and 5-day forecasts for cities worldwide. This is my ALX ProDev Frontend Capstone project.
 
-A responsive weather dashboard built with React that provides real-time weather information for cities worldwide. This is my ALX ProDev Frontend Capstone project.
 
-## 📋 Table of Contents
-- [Project Status](#-project-status)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [What I've Built](#️-what-ive-built)
-- [What I'm Working On](#-what-im-working-on)
-- [Challenges Faced](#-challenges-faced)
-- [What I've Learned](#-what-ive-learned)
-- [Next Steps](#-next-steps)
-- [Author](#-author)
+📋 Table of Contents
+Live Demo
 
-## 🚦 Project Status
 
-**Current Phase: Phase 3 Complete - Features That Impress**
+Features
 
-### ✅ Completed (Phase 1)
-- [x] React project created with Vite
-- [x] Folder structure organized
-- [x] GitHub repository initialized
-- [x] README documentation started
-- [x] SearchBar component with input validation
-- [x] WeatherDisplay component with responsive grid layout
-- [x] Connected OpenWeatherMap API to fetch real-time weather data
-- [x] Weather icons from OpenWeatherMap with smart emoji fallback
-- [x] Loading spinner for better UX during API calls
-- [x] Reusable ErrorMessage component
-- [x] Responsive design (works on mobile, tablet, and desktop)
-- [x] Gradient background and polished card design
 
-### ✅ Completed (Phase 2)
-- [x] **Centralized API Logic** - Clean, organized weatherService with base config and consistent error handling
-- [x] **Custom Hook** - Created `useWeather` hook to separate logic from UI
-- [x] **Reusable Button Component** - Button with variants (primary, secondary, danger, disabled)
-- [x] **Recent Searches with localStorage** - Saves last 5 cities, persists after browser close, click to search again
-- [x] **Storage Service** - Dedicated service for localStorage operations
-- [x] **RecentSearches Component** - Displays clickable city buttons
-- [x] **Empty State UI** - Friendly messages when no searches or no city selected
+Tech Stack
 
-### ✅ Completed (Phase 3)
-- [x] **Temperature Unit Toggle** - Switch between Celsius and Fahrenheit
-  - UnitContext for global state management
-  - UnitToggle component in header
-  - localStorage persistence
-  - Utility functions for conversion
 
-- [x] **Dark/Light Theme Switcher** - Complete dark mode implementation
-  - ThemeContext with class-based dark mode
-  - ThemeToggle button (🌙/☀️)
-  - localStorage persistence
-  - Tailwind v3 configuration with `darkMode: 'class'`
-  - Dark mode styles for all components
-  - Fixed Tailwind v4 compatibility issues
+Getting Started
 
-- [x] **Advanced Error Handling** - Bulletproof error management
-  - Rate limit exceeded (429) handling
-  - Network offline detection
-  - Invalid API key (401) handling
-  - Server error (500+) handling
-  - City not found (404) handling
-  - User-friendly error messages with icons
-  - Structured error objects with titles and descriptions
-  - Error utility service for consistent messaging
 
-- [x] **Geolocation Support** - Apple/Google style location detection
-  - Custom `useGeolocation` hook
-  - Elegant "⏺ Current Location" link in header
-  - Browser permission handling
-  - Weather fetch by coordinates
-  - Graceful permission denial
-  - Location-specific error messages
-  - No intrusive popups - user controls when to share
+Project Structure
 
-### 🚀 Features
 
-#### Current Features
-- 🔍 **City Search** - Search for any city worldwide with input validation
-- 🌡️ **Temperature Toggle** - Switch between Celsius and Fahrenheit with localStorage persistence
-- 🌙 **Dark/Light Mode** - Complete theme switcher with localStorage persistence
-- 📍 **Geolocation** - One-click weather for current location (Apple/Google style)
-- 💧 **Humidity** - Current humidity percentage
-- 💨 **Wind Speed** - Current wind speed in m/s
-- ☁️ **Weather Icons** - Visual weather representation with smart emoji fallback
-- 📱 **Fully Responsive** - Works perfectly on phones, tablets, and desktops
-- ⏳ **Loading States** - Spinner shows while fetching data
-- ⚠️ **Advanced Error Handling** - Specific errors for rate limits, network issues, API keys, etc.
-- ✅ **Input Validation** - Prevents empty searches
-- 🎣 **Custom Hook** - Clean separation of weather logic using `useWeather`
-- 🔘 **Reusable Button** - Button component with multiple style variants
-- 💾 **Recent Searches** - Saves last 5 searched cities in localStorage, persists after browser close
-- 🔄 **Click to Search** - Click any recent city to search again
-- 🎨 **Empty States** - Friendly messages when no searches or no city selected
-- 📋 **Smart History Management** - No duplicates, oldest removed when limit reached
-- 🎭 **Context API** - Global state management for units and theme
-- 📊 **Detailed Weather Data** - Temperature, feels like, min/max, pressure, visibility, clouds, sunrise/sunset
+Implementation Highlights
 
-#### Coming Soon (Phase 4)
-- 📅 **5-Day Forecast** - Extended weather forecast
-- 📊 **Weather Charts** - Visual temperature trends
-- ✨ **Animations** - Smooth transitions and effects
-- 📱 **PWA Support** - Installable as a mobile app
 
-## 🛠️ Tech Stack
+API Integration
 
-- **Frontend:** React 18 + Vite
-- **Styling:** Tailwind CSS v3
-- **API:** OpenWeatherMap
-- **Storage:** Browser localStorage
-- **State Management:** React Context API
-- **Geolocation:** Browser Navigator API
-- **Deployment:** Netlify (planned)
 
-## 🚀 Getting Started
+5-Day Forecast
 
-### Prerequisites
-- Node.js (v16+)
-- npm
 
-### Installation
+Error Handling
 
-```bash
+
+State Management
+
+
+Responsive Design
+
+
+Author
+
+
+🌐 Live Demo
+Live URL: https://alx-capstone-weather-dashboard.vercel.app/
+
+
+The application is deployed on Vercel and is fully functional across all devices.
+
+
+✨ Features
+Core Functionality
+City Search - Search for any city worldwide with input validation and debounced API calls
+
+
+Real-time Weather Data - Current temperature, conditions, humidity, wind speed, and more
+
+
+5-Day Weather Forecast - Extended forecast with daily predictions including:
+
+
+Daily temperature (high/low)
+
+
+Weather conditions with icons
+
+
+Humidity and wind speed
+
+
+Formatted dates
+
+
+Temperature Unit Toggle - Switch between Celsius and Fahrenheit with localStorage persistence
+
+
+Dark/Light Theme - Complete theme switcher with class-based dark mode and localStorage persistence
+
+
+Geolocation Support - One-click weather for current location with browser permission handling
+
+
+Recent Searches - Persistent search history (last 5 cities) stored in localStorage, click to re-search
+
+
+Weather Icons - Dynamic icons from OpenWeatherMap with smart emoji fallback
+
+
+Technical Features
+Custom Hooks - useWeather for data fetching logic, useGeolocation for location detection
+
+
+Context API - Global state management for units and theme preferences
+
+
+Centralized Services - Dedicated services for API calls and localStorage operations
+
+
+Comprehensive Error Handling - Structured error messages for rate limits, network issues, invalid API keys, and more
+
+
+Responsive Design - Mobile-first approach with Tailwind CSS breakpoints
+
+
+Empty States - User-friendly messages when no searches or no city selected
+
+
+🛠️ Tech Stack
+Frontend: React 18 + Vite
+
+
+Styling: Tailwind CSS v3 with darkMode: 'class'
+
+
+API: OpenWeatherMap Current Weather Data API & 5-Day Forecast API
+
+
+Storage: Browser localStorage for user preferences and search history
+
+
+State Management: React Context API (ThemeContext, UnitContext)
+
+
+Geolocation: Browser Navigator API with custom hook
+
+
+Deployment: Vercel
+
+
+🚀 Getting Started
+Prerequisites
+Node.js (v16 or higher)
+
+
+npm or yarn
+
+
+OpenWeatherMap API key
+
+
+Installation
+bash
 # Clone the repository
 git clone https://github.com/yourusername/alx-capstone-weather-dashboard.git
 
-# Navigate to project
+
+# Navigate to project directory
 cd alx-capstone-weather-dashboard
+
 
 # Install dependencies
 npm install
 
+
 # Create .env file and add your API key
 echo "VITE_WEATHER_API_KEY=your_api_key_here" > .env
 
+
 # Start development server
 npm run dev
-The app will open at http://localhost:5173
+The application will be available at http://localhost:5173
+
 
 📁 Project Structure
 text
@@ -152,7 +171,8 @@ alx-capstone-weather-dashboard/
 │   │   │   └── RecentSearches.jsx
 │   │   ├── weather/
 │   │   │   ├── WeatherDisplay.jsx
-│   │   │   └── WeatherIcon.jsx
+│   │   │   ├── WeatherIcon.jsx
+│   │   │   └── ForecastDisplay.jsx      # 5-day forecast component
 │   │   └── common/
 │   │       ├── Button.jsx
 │   │       ├── LoadingSpinner.jsx
@@ -165,13 +185,13 @@ alx-capstone-weather-dashboard/
 │   │   └── ThemeContext.jsx
 │   ├── hooks/
 │   │   ├── useWeather.js
-│   │   └── useGeolocation.js           # Geolocation logic
+│   │   └── useGeolocation.js
 │   ├── services/
-│   │   ├── weatherService.js            # API calls with error handling
-│   │   └── storageService.js            # localStorage operations
+│   │   ├── weatherService.js            # Handles both current & forecast API calls
+│   │   └── storageService.js
 │   ├── utils/
-│   │   ├── formatters.js                # Temperature conversion
-│   │   └── errorMessages.js             # Structured error messages
+│   │   ├── formatters.js                # Temperature conversion & date formatting
+│   │   └── errorMessages.js
 │   ├── App.jsx
 │   └── main.jsx
 ├── .env
@@ -179,184 +199,270 @@ alx-capstone-weather-dashboard/
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── package.json
-├── README.md
-└── vite.config.js
-🏗️ What I've Built
-Phase 1 Features:
-✅ SearchBar - Input validation and error handling
+├── vite.config.js
+└── README.md
+🏗️ Implementation Highlights
+Custom Hooks
+useWeather Hook
 
-✅ WeatherDisplay - Responsive grid layout with detailed weather data
 
-✅ WeatherIcon - Dynamic icons with emoji fallback
+javascript
+const {
+  weatherData,       // Current weather data
+  forecastData,      // 5-day forecast data
+  loading,
+  error,
+  fetchWeather
+} = useWeather();
 
-✅ LoadingSpinner - Visual feedback during API calls
 
-✅ ErrorMessage - Reusable error component
+// Fetches both current weather and 5-day forecast in parallel
+// Manages loading and error states for both data sets
+5-Day Forecast Component
+ForecastDisplay.jsx
 
-✅ Responsive Design - Works on all devices
 
-✅ API Integration - Real-time weather data
+Displays weather predictions for the next 5 days
 
-Phase 2 Features:
-✅ Centralized API Service - Organized API calls with status code handling
 
-✅ Custom Hook - useWeather for clean logic separation
+Each day shows:
 
-✅ Reusable Button - Variants for different use cases
 
-✅ Storage Service - localStorage management
+Day of week (Mon, Tue, etc.)
 
-✅ Recent Searches - Persistent search history with 5-city limit
 
-✅ Empty State UI - Friendly first-time experience
+Weather icon
 
-Phase 3 Features (Completed):
-✅ Temperature Unit Toggle
 
-Context API for global state
+High/Low temperature
 
-Persistent user preference in localStorage
 
-Real-time temperature conversion
+Weather description
 
-Clean toggle UI in header
 
-✅ Dark/Light Theme Switcher
+Humidity percentage
 
-ThemeContext with class-based dark mode
 
-Manual theme toggle (not system-dependent)
+Responsive grid layout (scrollable on mobile, grid on desktop)
 
-localStorage persistence
 
-Tailwind v3 with darkMode: 'class' configuration
+Temperature unit conversion (Celsius/Fahrenheit)
 
-Dark mode styles for all components
 
-Smooth transitions between themes
+Dark mode compatible styling
 
-✅ Advanced Error Handling
 
-Structured error objects with titles and descriptions
+Centralized Services
+weatherService.js
 
-Rate limit exceeded (429) detection
 
-Network offline handling
+javascript
+// Fetches current weather
+export const fetchCurrentWeather = async (city, unit = 'metric') => {...}
 
-Invalid API key (401) detection
 
-Server error (500+) handling
+// Fetches 5-day forecast (3-hour intervals aggregated to daily)
+export const fetchWeatherForecast = async (city, unit = 'metric') => {...}
 
-City not found (404) handling
 
-User-friendly messages with emoji icons
+// Fetches weather by coordinates (for geolocation)
+export const fetchWeatherByCoords = async (lat, lon, unit = 'metric') => {...}
 
-Centralized error utility service
 
-✅ Geolocation Support
+// Fetches forecast by coordinates
+export const fetchForecastByCoords = async (lat, lon, unit = 'metric') => {...}
+🔌 API Integration
+The application integrates with two OpenWeatherMap APIs:
 
-Custom useGeolocation hook
 
-Elegant "⏺ Current Location" link (Apple/Google style)
+1. Current Weather Data API
+javascript
+// Endpoint
+https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric
 
-Browser permission handling with high accuracy option
 
-Weather fetch by coordinates
+// Response includes current weather conditions
+2. 5-Day Forecast API
+javascript
+// Endpoint
+https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={API_KEY}&units=metric
 
-Permission denial with helpful messages
 
-Location timeout and unavailable handling
+// Response includes 3-hour intervals for 5 days
+// Aggregated to daily forecasts with min/max temperatures
+Forecast Data Processing
+The 3-hour interval data is processed to create daily forecasts:
 
-No intrusive popups - user controls when to share
 
-🔨 What I'm Working On Now (Phase 4)
-📅 5-Day Forecast - Extended weather forecast with daily predictions
+javascript
+// Group forecast items by day
+const dailyForecasts = list.reduce((acc, item) => {
+  const date = new Date(item.dt * 1000).toLocaleDateString();
+ 
+  if (!acc[date]) {
+    acc[date] = {
+      date,
+      temps: [],
+      icons: [],
+      descriptions: [],
+      humidity: [],
+      windSpeed: []
+    };
+  }
+ 
+  acc[date].temps.push(item.main.temp);
+  acc[date].icons.push(item.weather[0].icon);
+  acc[date].descriptions.push(item.weather[0].description);
+  acc[date].humidity.push(item.main.humidity);
+  acc[date].windSpeed.push(item.wind.speed);
+ 
+  return acc;
+}, {});
 
-📊 Weather Charts - Visual temperature trends using Chart.js or Recharts
 
-✨ Animations - Smooth transitions and effects with Framer Motion
+// Calculate daily min/max and averages
+📅 5-Day Forecast Implementation
+Features
+Daily Aggregation - 3-hour intervals grouped into meaningful daily forecasts
 
-📱 PWA Support - Make app installable with offline support
 
-⚠️ Challenges Faced
-Challenge	Solution
-First time using Vite	Followed documentation and tutorials
-Project structure	Created scalable component architecture
-API key security	Used .env with .gitignore
-Responsive design	Tailwind breakpoints (sm, md, lg)
-Image loading errors	Emoji fallback strategy
-Error handling	Reusable ErrorMessage component
-Logic/UI separation	Custom useWeather hook
-Reusable components	Button with variant props
-localStorage management	Dedicated storage service
-Empty states	EmptyState component
-Unit conversion	Context API + utility functions
-User preferences	localStorage persistence
-Tailwind v4 compatibility	Downgraded to stable Tailwind v3
-Dark mode configuration	Set darkMode: 'class' in config
-Theme persistence	ThemeContext with localStorage
-Error status codes	Enhanced weatherService with status detection
-User-friendly errors	Created errorMessages utility with icons
-Browser permissions	Custom useGeolocation hook with error handling
-Coordinate-based API	Added getWeatherByCoords to weatherService
-📝 What I've Learned
-Vite Setup - Modern React tooling
+Min/Max Temperature - Shows temperature range for each day
 
-Project Organization - Scalable architecture
 
-Tailwind CSS - Responsive utility classes, dark mode configuration
+Weather Icons - Representative icons for each day's conditions
 
-API Integration - Error handling best practices, status code management
 
-Responsive Design - Mobile-first approach
+Humidity Data - Average humidity percentage per day
 
-Component Reusability - DRY principles
 
-Fallback Strategies - Graceful degradation for images
+Wind Speed - Average wind speed per day
 
-Custom Hooks - Logic separation for weather and geolocation
 
-Centralized Services - Maintainable code structure
+Component Structure
+jsx
+<ForecastDisplay forecast={forecastData} unit={unit} />
 
-localStorage - Cross-session persistence
 
-Empty States - UX improvement for first-time users
+// Renders:
+// ┌─────────────────────────────────┐
+// │       5-Day Forecast            │
+// ├─────────────────────────────────┤
+// │ Mon  ☀️ 24°/18°  • 45% humidity │
+// │ Tue  ☁️ 22°/16°  • 62% humidity │
+// │ Wed  🌧 19°/14°  • 85% humidity │
+// │ Thu  ⛅ 21°/15°  • 55% humidity │
+// │ Fri  ☀️ 26°/20°  • 40% humidity │
+// └─────────────────────────────────┘
+Responsive Design
+Mobile: Horizontal scrollable cards
 
-Context API - Global state management for themes and units
 
-Utility Functions - Clean, testable code for formatting
+Tablet: 2-column grid
 
-Dark Mode Implementation - Class-based theming with Tailwind
 
-Theme Switching - Manual control vs system preferences
+Desktop: 5-column grid or single row
 
-PostCSS Configuration - Proper plugin setup
 
-Version Management - Handling breaking changes in dependencies
+⚠️ Error Handling
+The application implements comprehensive error handling for various scenarios:
 
-Error Handling Patterns - Structured errors with status codes
 
-Browser APIs - Geolocation with permission handling
+Status Code Error Type  User Message
+401 Invalid API Key Invalid API key. Please check your configuration.
+404 City Not Found  City not found. Please check the spelling and try again.
+429 Rate Limit Exceeded Too many requests. Please wait a moment and try again.
+500+  Server Error  Weather service is currently unavailable. Please try again later.
+- Network Offline Unable to connect. Please check your internet connection.
+- Geolocation Denied  Location access denied. Please enable permissions to use this feature.
+- Geolocation Unavailable Unable to detect your location. Please try again or search manually.
+All errors are presented with user-friendly messages and appropriate icons for better UX.
 
-User Experience Design - Subtle location prompts vs intrusive popups
 
-🎯 Next Steps
-Week 5-6 Goals:
-Add 5-day forecast with cards
+🎨 State Management
 
-Implement weather charts for temperature trends
 
-Add animations for smooth transitions
+React Context API
+ThemeContext - Manages application theme (dark/light)
 
-Deploy to Netlify
 
-Write tests for components
+UnitContext - Manages temperature units (Celsius/Fahrenheit)
 
-Week 7 Goals (Stretch):
-Make it a PWA (installable)
 
-Add weather maps
+localStorage Persistence
+Theme Preference - Remembers user's dark/light choice
 
-Implement air quality index
 
-Add weather alerts
+Unit Preference - Remembers Celsius/Fahrenheit preference
+
+
+Recent Searches - Stores last 5 searched cities
+
+
+📱 Responsive Design
+The application is fully responsive across all device sizes using Tailwind CSS breakpoints:
+
+
+Mobile (< 640px): Stacked layout with horizontal scroll for forecast
+
+
+Tablet (640px - 1024px): Two-column grid for weather data, 2-column forecast
+
+
+Desktop (> 1024px): Full layout with 5-column forecast grid
+
+
+Dark Mode Implementation
+javascript
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class',
+  // ... other configurations
+}
+All components include dark mode variants:
+
+
+jsx
+<div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+  {/* Content adapts to theme */}
+</div>
+🧪 Key Technical Decisions
+Vite over Create React App - Faster development and build times
+
+
+Tailwind CSS v3 - Utility-first styling with dark mode support
+
+
+Custom Hooks - Clean separation of logic from UI components
+
+
+Context API - Simple global state management without Redux complexity
+
+
+Centralized Services - Maintainable API and storage logic
+
+
+Class-based Dark Mode - Full user control over theme preference
+
+
+Structured Error Objects - Consistent error handling across the application
+
+
+Forecast Data Aggregation - Converting 3-hour intervals to meaningful daily forecasts
+
+
+👤 Author
+
+
+ALX ProDev Frontend Program Participant
+
+
+GitHub: @yourusername
+
+
+Project Repository: alx-capstone-weather-dashboard
+
+
+Live Demo: alx-capstone-weather-dashboard.vercel.app
+
+
+This project was completed as part of the ALX ProDev Frontend Program, demonstrating proficiency in React, API integration, state management, and responsive design.
