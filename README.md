@@ -1,6 +1,6 @@
 🌤️ ALX Capstone: Weather Dashboard
 
-A responsive weather dashboard built with React that provides real-time weather information and 5-day forecasts for cities worldwide. This is my ALX ProDev Frontend Capstone project.
+A responsive weather dashboard built with React that provides real-time weather information and 5-day forecasts for cities worldwide. This is my ALX Capstone project.
 
 📋 Table of Contents
 
@@ -412,4 +412,4 @@ Project Repository: alx-capstone-weather-dashboard
 
 Live Demo: alx-capstone-weather-dashboard.vercel.app
 
-This project was completed as part of the ALX ProDev Frontend Program, demonstrating proficiency in React, API integration, state management, and responsive design.
+This project was completed as part of the ALX Frontend Program, demonstrating proficiency in React, API integration, state management, and responsive design.

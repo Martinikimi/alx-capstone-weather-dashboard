@@ -11,12 +11,6 @@ import { ThemeProvider } from "./context/ThemeContext"
 import { useWeather } from "./hooks/useWeather"
 import { useGeolocation } from "./hooks/useGeolocation" 
 
-
-
-
-
-
-
 function AppContent() {
   const { weatherData, loading, error, searchCity, recentSearches } = useWeather()
   const { getUserLocation, loading: locLoading, error: locError } = useGeolocation() 
