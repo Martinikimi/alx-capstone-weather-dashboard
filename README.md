@@ -123,54 +123,93 @@ The application will be available at http://localhost:5173
 
 📁 Project Structure
 
-
 alx-capstone-weather-dashboard/
+
 ├── public/
+
 │   └── index.html
+
 ├── src/
+
 │   ├── components/
+
 │   │   ├── common/
+
 │   │   │   ├── Button.jsx
+
 │   │   │   ├── EmptyState.jsx
+
 │   │   │   ├── ErrorMessage.jsx
+
 │   │   │   ├── LoadingSpinner.jsx
+
 │   │   │   ├── ThemeToggle.jsx
+
 │   │   │   └── UnitToggle.jsx
+
 │   │   ├── search/
+
 │   │   │   ├── RecentSearches.jsx
+
 │   │   │   └── SearchBar.jsx
+
 │   │   └── weather/
+
 │   │       ├── ForecastDisplay.jsx
+
 │   │       ├── WeatherDisplay.jsx
+
 │   │       └── WeatherIcon.jsx
+
 │   ├── contexts/
+
 │   │   ├── ThemeContext.jsx
+
 │   │   └── UnitContext.jsx
+
 │   ├── hooks/
+
 │   │   ├── useDebounce.js
+
 │   │   ├── useGeolocation.js
+
 │   │   └── useWeather.js
+
 │   ├── services/
+
 │   │   ├── storageService.js
+
 │   │   └── weatherService.js
+
 │   ├── utils/
+
 │   │   ├── errorMessages.js
+
 │   │   └── formatters.js
+
 │   ├── App.jsx
+
 │   ├── App.css
+
 │   ├── index.css
+
 │   └── main.jsx
+
 ├── .env
+
 ├── .gitignore
+
 ├── index.html
+
 ├── package.json
+
 ├── postcss.config.js
+
 ├── tailwind.config.js
+
 ├── vite.config.js
+
 └── README.md
-🏗️ Implementation Highlights
-Custom Hooks
-useWeather Hook
 
 javascript
 const { 
